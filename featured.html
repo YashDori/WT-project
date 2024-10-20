@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Artists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #000;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .artist {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .artist img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .artist h2 {
+            margin: 10px 0;
+            color: #d9534f;
+            font-size: 1.5em;
+        }
+        .artist p {
+            margin-top: 5px;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Featured Artists</h1>
+    </div>
+    <div class="content">
+        <div class="artist">
+            <img src="artist1.jpg" alt="Mike Mignola">
+            <h2>Mike Mignola</h2>
+            <p>Known for his unique art style and creation of the Hellboy series, Mike Mignola's work blends Gothic horror with supernatural elements. His atmospheric storytelling and distinctive line art have made him a fan favorite.</p>
+        </div>
+        <div class="artist">
+            <img src="artist2.jpg" alt="Matt Kindt">
+            <h2>Matt Kindt</h2>
+            <p>Matt Kindt is an award-winning writer and illustrator known for his intricate and thought-provoking graphic novels. His work often explores themes of memory, espionage, and the human condition, blending surreal narratives with rich artwork.</p>
+        </div>
+        <div class="artist">
+            <img src="artist3.jpg" alt="Jeff Lemire">
+            <h2>Jeff Lemire</h2>
+            <p>Jeff Lemire is celebrated for his deeply emotional storytelling and versatile art style. From his independent projects to major titles, Lemire's work, including series like "Sweet Tooth" and "Black Hammer," has consistently pushed the boundaries of the medium.</p>
+        </div>
+        <div class="artist">
+            <img src="artist4.jpg" alt="Jody Houser">
+            <h2>Jody Houser</h2>
+            <p>Jody Houser is a prolific writer known for her dynamic storytelling and strong character development. With a background in television and comics, Houser has worked on various adaptations and original series, bringing a unique voice to each project.</p>
+        </div>
+    </div>
+</body>
+</html>
+

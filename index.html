@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Dark Horse Comics" />
+    <meta property="og:description" content="Shop the latest releases from Dark Horse Comics." />
+    <title>Header and Grid Layout</title>
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: red;
+            --button-bg: rgba(255, 0, 0, 0.8);
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 50px; /* Adjust as per actual logo size */
+        }
+        .logo-text {
+            margin-left: 10px;
+        }
+        .logo-text .main {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-text .sub {
+            color: var(--secondary-color);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-url {
+            color: white;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+        .nav-links li:hover .dropdown-content {
+            display: block;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input {
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+        }
+        .buttons button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .grid-item {
+            position: relative;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .grid-item:hover img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+        .grid-item .download-btn {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .grid-item:hover .download-btn {
+            display: block; /* Show button on hover */
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          background-color: var(--primary-color);
+          color: white;
+          padding: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .footer-links, .footer-contact, .footer-social {
+          flex: 1;
+          margin: 0 20px;
+      }
+      
+      .footer-links h3, .footer-contact h3, .footer-social h3 {
+          margin-bottom: 10px;
+      }
+      
+      .footer-links ul, .footer-contact p {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .footer-links a, .footer-contact a {
+          color: white;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 5px;
+      }
+      
+      .footer-links a:hover, .footer-contact a:hover {
+          color: var(--secondary-color);
+      }
+      
+      .footer-social a {
+          margin-right: 10px;
+      }
+      
+      .footer-social img {
+          width: 24px;
+          height: 24px;
+      }
+      
+      .footer-bottom {
+          text-align: center;
+          padding: 10px 0;
+          background-color: #111;
+      }
+      
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.download-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const pdfLink = event.target.dataset.pdf;
+                    if (pdfLink) {
+                        location.href = pdfLink;
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <div class="logo-text">
+                <span class="main">DARK</span>
+                <span class="sub">HORSE</span>
+                <div class="logo-url">WWW.DARKHORSE.COM</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#">SHOP</a>
+                <div class="dropdown-content">
+                    <a href="#">New Releases</a>
+                    <a href="#">Upcoming</a>
+                    <a href="#">Free Comic Book Day</a>
+                    <a href="#">World of Black Hammer</a>
+                    <a href="#">Mike Mignola</a>
+                    <a href="#">Matt Kindt</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">FEATURED</a>
+                <div class="dropdown-content">
+                    <a href="#">New Releases</a>
+                    <a href="#">Free Comic Book Day</a>
+                    <a href="#">Avatar: The Last Airbender</a>
+                    <a href="#">Action/Adventure</a>
+                    <a href="#">Mike Mignola</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">SERIES</a>
+                <div class="dropdown-content">
+                    <a href="#">World of Black Hammer</a>
+                    <a href="#">Berserk</a>
+                    <a href="#">Horror</a>
+                    <a href="#">Jeff Lemire</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">GENRES</a>
+                <div class="dropdown-content">
+                    <a href="#">Science-Fiction</a>
+                    <a href="#">Fantasy</a>
+                    <a href="#">Gamers</a>
+                    <a href="#">Jody Houser</a>
+                </div>
+            </li>
+            <li><a href="#">PHOTOSHELF</a></li>
+            <li><a href="#">APPS</a></li>
+            <li><a href="#">FREE</a></li>
+            <li><a href="#">NEWS & EVENTS</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="buttons">
+            <button onclick="location.href='login.html'">LOGIN/LOGOUT</button>
+            <button onclick="location.href='register.html'">SIGN UP/REGISTER</button>
+        </div>
+    </header>
+
+    <section>
+      <h2>New Releases</h2>
+      <hr>
+      <div class="grid-container">
+          <div class="grid-item">
+            <a href="wt project/book1.pdf" download>
+              <img src="book1.png" alt="Book 1" title="Download Photo 1 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book1.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book2.pdf" download>
+              <img src="book2.png" alt="Book 2" title="Download Photo 2 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book2.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book3.pdf" download>
+              <img src="book3.png" alt="Book 3" title="Download Photo 3 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book3.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book4.pdf" download>
+              <img src="book4.png" alt="Book 4" title="Download Photo 4 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book4.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book5.pdf" download>
+              <img src="book5.png" alt="Book 5" title="Download Photo 5 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book5.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book6.pdf" download>
+              <img src="book6.png" alt="Book 6" title="Download Photo 6 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book6.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book7.pdf" download>
+              <img src="book7.png" alt="Book 7" title="Download Photo 7 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book7.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book8.pdf" download>
+              <img src="book8.png" alt="Book 8" title="Download Photo 8 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book8.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book9.pdf" download>
+              <img src="book9.png" alt="Book 9" title="Download Photo 9 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book9.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book10.pdf" download>
+              <img src="book10.png" alt="Book 10" title="Download Photo 10 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book10.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book11.pdf" download>
+              <img src="book11.png" alt="Book 11" title="Download Photo 11 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book11.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/book12.pdf" download>
+              <img src="book12.png" alt="Book 12" title="Download Photo 12 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/book12.pdf'">Download PDF</button>
+          </div>
+      </div>
+      <h2>Most popular </h2>
+      <hr>
+      <div class="grid-container">
+          <div class="grid-item">
+            <a href="files/photo1.pdf" download>
+              <img src="photo1.jpg" alt="Photo 1" title="Download Photo 1 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo1.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo2.pdf" download>
+              <img src="photo2.jpg" alt="Photo 2" title="Download Photo 2 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo2.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo3.pdf" download>
+              <img src="photo3.jpg" alt="Photo 3" title="Download Photo 3 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo3.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo4.pdf" download>
+              <img src="photo4.jpg" alt="Photo 4" title="Download Photo 4 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo4.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo5.pdf" download>
+              <img src="photo5.jpg" alt="Photo 5" title="Download Photo 5 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo5.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo6.pdf" download>
+              <img src="photo6.jpg" alt="Photo 6" title="Download Photo 6 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo6.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo7.pdf" download>
+              <img src="photo7.jpg" alt="Photo 7" title="Download Photo 7 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo7.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo8.pdf" download>
+              <img src="photo8.jpg" alt="Photo 8" title="Download Photo 8 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo8.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo9.pdf" download>
+              <img src="photo9.jpg" alt="Photo 9" title="Download Photo 9 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo9.pdf'">Download PDF</button>
+          </div>
+          <div class="grid-item">
+            <a href="files/photo10.pdf" download>
+              <img src="photo10.jpg" alt="Photo 10" title="Download Photo 10 PDF">
+            </a>
+            <button class="download-btn" onclick="location.href='files/photo10.pdf'">Download PDF</button>
+          </div>
+      </div>
+            
+    </section>
+    <footer>
+      <div class="footer-container">
+          <div class="footer-links">
+              <h3>Explore</h3>
+              <ul>
+                  <li><a href="#">Shop</a></li>
+                  <li><a href="featured.html">Featured</a></li>
+                  <li><a href="#">Genres</a></li>
+                  <li><a href="#">New Releases</a></li>
+                  <li><a href="#">Upcoming</a></li>
+                  <li><a href="about.html">About Us</a></li>
+              </ul>
+          </div>
+          <div class="footer-contact">
+              <h3>Contact Us</h3>
+              <p>Email: support@darkhorse.com</p>
+              <p>Phone: (123) 456-7890</p>
+              <p>Address: 123 Comic St, Fantasyland, CA 90210</p>
+          </div>
+          <div class="footer-social">
+              <h3>Follow Us</h3>
+              <a href="#" aria-label="Facebook"><img src="facebook-icon.jpg" alt="Facebook"></a>
+              <a href="#" aria-label="Twitter"><img src="twitter-icon.jpg" alt="Twitter"></a>
+              <a href="#" aria-label="Instagram"><img src="instagram-icon.jpg" alt="Instagram"></a>
+              <a href="#" aria-label="YouTube"><img src="youtube-icon.jpg" alt="YouTube"></a>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 Dark Horse Comics. All Rights Reserved.</p>
+          <p>Privacy Policy | Terms of Service | Contact Us</p>
+      </div>
+  </footer>
+  
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
